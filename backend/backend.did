@@ -1,0 +1,24 @@
+type Time = int;
+type Rental = 
+ record {
+   bookId: nat;
+   endTime: Time;
+   startTime: Time;
+   userId: principal;
+ };
+type Book = 
+ record {
+   author: text;
+   content: text;
+   coverImage: text;
+   description: text;
+   id: nat;
+   title: text;
+ };
+service : {
+  getAllBooks: () -> (vec Book) query;
+  getBook: (nat) -> (opt Book) query;
+  getUserRentals: (principal) -> (vec Rental) query;
+  rentBook: (nat) -> (opt Rental);
+  returnBook: (nat) -> (bool);
+}
